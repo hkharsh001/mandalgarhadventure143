@@ -1,44 +1,48 @@
-/* =========================================================
-   MANDALGARH ADVENTURE 143
-   Responsive / Mobile + Desktop JavaScript
-   ========================================================= */
-
 "use strict";
 
 
-/* =========================================================
+/* =====================================================
    DOM
-   ========================================================= */
+===================================================== */
 
 const body = document.body;
+
 const navbar = document.querySelector(".navbar");
 
-const menuButton = document.getElementById("menuButton");
-const closeMenu = document.getElementById("closeMenu");
-const mobileMenu = document.getElementById("mobileMenu");
+const menuButton =
+    document.getElementById("menuButton");
 
-const mobileLinks = document.querySelectorAll(".mobile-menu a");
-const navLinks = document.querySelectorAll(
-    '.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]'
-);
+const closeMenu =
+    document.getElementById("closeMenu");
 
-const sections = document.querySelectorAll("section[id]");
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const mobileLinks =
+    document.querySelectorAll(".mobile-menu a");
+
+const navLinks =
+    document.querySelectorAll(
+        '.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]'
+    );
+
+const sections =
+    document.querySelectorAll("section[id]");
 
 
-/* =========================================================
-   DEVICE / VIEWPORT HELPERS
-   ========================================================= */
+/* =====================================================
+   DEVICE
+===================================================== */
 
 const mobileBreakpoint = 800;
 
-const isMobile = () => {
-    return window.innerWidth <= mobileBreakpoint;
-};
+const isMobile = () =>
+    window.innerWidth <= mobileBreakpoint;
 
 
-/* =========================================================
+/* =====================================================
    MOBILE MENU
-   ========================================================= */
+===================================================== */
 
 function openMobileMenu() {
 
@@ -49,10 +53,16 @@ function openMobileMenu() {
     body.classList.add("menu-open");
 
     if (menuButton) {
-        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
     }
 
-    mobileMenu.setAttribute("aria-hidden", "false");
+    mobileMenu.setAttribute(
+        "aria-hidden",
+        "false"
+    );
 }
 
 
@@ -65,94 +75,113 @@ function closeMobileMenu() {
     body.classList.remove("menu-open");
 
     if (menuButton) {
-        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
     }
 
-    mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenu.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 }
 
 
 if (menuButton) {
 
-    menuButton.addEventListener("click", openMobileMenu);
+    menuButton.addEventListener(
+        "click",
+        openMobileMenu
+    );
 
 }
 
 
 if (closeMenu) {
 
-    closeMenu.addEventListener("click", closeMobileMenu);
+    closeMenu.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
 }
 
-
-/* Close after selecting a mobile navigation link */
 
 mobileLinks.forEach(link => {
 
-    link.addEventListener("click", closeMobileMenu);
+    link.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
 });
 
 
-/* Close menu when clicking outside the content */
-
 if (mobileMenu) {
 
-    mobileMenu.addEventListener("click", event => {
+    mobileMenu.addEventListener(
+        "click",
+        event => {
 
-        if (event.target === mobileMenu) {
-            closeMobileMenu();
+            if (event.target === mobileMenu) {
+                closeMobileMenu();
+            }
+
         }
-
-    });
+    );
 
 }
 
 
-/* ESC closes mobile menu */
+/* ESC closes menu */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    if (event.key === "Escape") {
-
-        closeMobileMenu();
+        if (event.key === "Escape") {
+            closeMobileMenu();
+        }
 
     }
+);
 
-});
 
-
-/* =========================================================
+/* =====================================================
    RESPONSIVE MENU RESET
-   ========================================================= */
+===================================================== */
 
 let previousMobileState = isMobile();
 
 
-window.addEventListener("resize", () => {
+window.addEventListener(
+    "resize",
+    () => {
 
-    const currentMobileState = isMobile();
+        const currentMobileState =
+            isMobile();
 
-    /*
-     * If user rotates phone or resizes desktop browser,
-     * automatically reset the mobile menu.
-     */
+        if (
+            currentMobileState !==
+            previousMobileState
+        ) {
 
-    if (currentMobileState !== previousMobileState) {
+            closeMobileMenu();
 
-        closeMobileMenu();
+            previousMobileState =
+                currentMobileState;
 
-        previousMobileState = currentMobileState;
+        }
 
-    }
+    },
+    { passive: true }
+);
 
-}, { passive: true });
 
-
-/* =========================================================
+/* =====================================================
    NAVBAR
-   ========================================================= */
+===================================================== */
 
 let ticking = false;
 
@@ -161,120 +190,154 @@ function updateNavbar() {
 
     if (!navbar) return;
 
-    const scrolled = window.scrollY > 40;
+    if (window.scrollY > 40) {
 
-    if (scrolled) {
-
-        navbar.classList.add("navbar-scrolled");
+        navbar.classList.add(
+            "navbar-scrolled"
+        );
 
     } else {
 
-        navbar.classList.remove("navbar-scrolled");
+        navbar.classList.remove(
+            "navbar-scrolled"
+        );
 
     }
 
 }
 
 
-window.addEventListener("scroll", () => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-    if (!ticking) {
+        if (!ticking) {
 
-        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(
+                () => {
 
-            updateNavbar();
+                    updateNavbar();
 
-            ticking = false;
+                    ticking = false;
 
-        });
+                }
+            );
 
-        ticking = true;
+            ticking = true;
+        }
 
-    }
-
-}, { passive: true });
+    },
+    { passive: true }
+);
 
 
 updateNavbar();
 
 
-/* =========================================================
+/* =====================================================
    SMOOTH SCROLL
-   ========================================================= */
+===================================================== */
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-    link.addEventListener("click", event => {
+        link.addEventListener(
+            "click",
+            event => {
 
-        const targetID = link.getAttribute("href");
+                const targetID =
+                    link.getAttribute("href");
 
-        if (!targetID || targetID === "#") return;
+                if (
+                    !targetID ||
+                    targetID === "#"
+                ) {
+                    return;
+                }
 
-        const target = document.querySelector(targetID);
+                const target =
+                    document.querySelector(
+                        targetID
+                    );
 
-        if (!target) return;
+                if (!target) return;
 
-        event.preventDefault();
+                event.preventDefault();
 
-        const navbarHeight = navbar
-            ? navbar.offsetHeight
-            : 0;
+                const navbarHeight =
+                    navbar
+                        ? navbar.offsetHeight
+                        : 0;
 
-        const targetPosition =
-            target.getBoundingClientRect().top +
-            window.scrollY -
-            navbarHeight;
+                const targetPosition =
+                    target.getBoundingClientRect()
+                        .top +
+                    window.scrollY -
+                    navbarHeight;
 
-        window.scrollTo({
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth"
+                });
 
-            top: targetPosition,
-
-            behavior: "smooth"
-
-        });
+            }
+        );
 
     });
 
-});
 
-
-/* =========================================================
+/* =====================================================
    ACTIVE NAVIGATION
-   ========================================================= */
+===================================================== */
 
-const sectionObserver = new IntersectionObserver(
+const sectionObserver =
+    new IntersectionObserver(
 
-    entries => {
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if (!entry.isIntersecting) return;
+                if (!entry.isIntersecting)
+                    return;
 
-            const id = entry.target.id;
+                const id =
+                    entry.target.id;
 
-            navLinks.forEach(link => {
+                navLinks.forEach(link => {
 
-                link.classList.remove("active");
+                    link.classList.remove(
+                        "active"
+                    );
 
-                if (link.getAttribute("href") === `#${id}`) {
+                    if (
+                        link.getAttribute(
+                            "href"
+                        ) === `#${id}`
+                    ) {
 
-                    link.classList.add("active");
+                        link.classList.add(
+                            "active"
+                        );
 
-                }
+                    }
+
+                });
 
             });
 
-        });
+        },
 
-    },
+        {
+            root: null,
 
-    {
-        root: null,
-        threshold: 0.25,
-        rootMargin: "-15% 0px -55% 0px"
-    }
+            threshold: 0.25,
 
-);
+            rootMargin:
+                "-15% 0px -55% 0px"
+        }
+
+    );
 
 
 sections.forEach(section => {
@@ -284,28 +347,28 @@ sections.forEach(section => {
 });
 
 
-/* =========================================================
+/* =====================================================
    SCROLL REVEAL
-   ========================================================= */
+===================================================== */
 
-const revealElements = document.querySelectorAll(
-    ".section-label, " +
-    ".experience-text, " +
-    ".experience-image, " +
-    ".experience-item, " +
-    ".feature, " +
-    ".about-features > div, " +
-    ".gallery-grid img, " +
-    ".location-grid > div"
-);
+const revealElements =
+    document.querySelectorAll(
+        ".section-label, " +
+        ".experience-text, " +
+        ".experience-image, " +
+        ".experience-item, " +
+        ".feature, " +
+        ".about-features > div, " +
+        ".gallery-grid img, " +
+        ".about-image, " +
+        ".location-grid > div"
+    );
 
-
-/*
- * Respect users who disable animation
- */
 
 const prefersReducedMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
 
 if (!prefersReducedMotion) {
@@ -317,28 +380,36 @@ if (!prefersReducedMotion) {
     });
 
 
-    const revealObserver = new IntersectionObserver(
+    const revealObserver =
+        new IntersectionObserver(
 
-        entries => {
+            entries => {
 
-            entries.forEach(entry => {
+                entries.forEach(entry => {
 
-                if (!entry.isIntersecting) return;
+                    if (!entry.isIntersecting)
+                        return;
 
-                entry.target.classList.add("revealed");
+                    entry.target.classList.add(
+                        "revealed"
+                    );
 
-                revealObserver.unobserve(entry.target);
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
-            });
+                });
 
-        },
+            },
 
-        {
-            threshold: 0.12,
-            rootMargin: "0px 0px -50px 0px"
-        }
+            {
+                threshold: 0.12,
 
-    );
+                rootMargin:
+                    "0px 0px -50px 0px"
+            }
+
+        );
 
 
     revealElements.forEach(element => {
@@ -351,152 +422,119 @@ if (!prefersReducedMotion) {
 
     revealElements.forEach(element => {
 
-        element.classList.add("revealed");
+        element.classList.add(
+            "revealed"
+        );
 
     });
 
 }
 
 
-/* =========================================================
-   LAZY LOAD IMAGES
-   ========================================================= */
+/* =====================================================
+   IMAGE OPTIMIZATION
+===================================================== */
 
-document.querySelectorAll("img").forEach(image => {
+document
+    .querySelectorAll("img")
+    .forEach(image => {
 
-    /*
-     * Don't lazy-load images that are already visible
-     * near the top of the page.
-     */
+        if (!image.hasAttribute("decoding")) {
 
-    if (!image.hasAttribute("loading")) {
+            image.setAttribute(
+                "decoding",
+                "async"
+            );
 
-        image.setAttribute("loading", "lazy");
-
-    }
-
-    if (!image.hasAttribute("decoding")) {
-
-        image.setAttribute("decoding", "async");
-
-    }
-
-});
-
-
-/* Hero image should load immediately */
-
-const hero = document.querySelector(".hero");
-
-if (hero) {
-
-    hero.style.willChange = "auto";
-
-}
-
-
-/* =========================================================
-   IMAGE ERROR HANDLING
-   ========================================================= */
-
-document.querySelectorAll("img").forEach(image => {
-
-    image.addEventListener("error", () => {
-
-        image.classList.add("image-error");
+        }
 
     });
 
-});
 
+/* =====================================================
+   IMAGE ERROR
+===================================================== */
 
-/* =========================================================
-   BOOKING BUTTON PROTECTION
-   ========================================================= */
+document
+    .querySelectorAll("img")
+    .forEach(image => {
 
-document.querySelectorAll(
-    'a[href^="tel:"], a[href*="wa.me"]'
-).forEach(button => {
+        image.addEventListener(
+            "error",
+            () => {
 
-    button.addEventListener("click", () => {
+                image.classList.add(
+                    "image-error"
+                );
 
-        /*
-         * Close mobile menu before leaving the website.
-         */
+                console.warn(
+                    "Image failed to load:",
+                    image.src
+                );
 
-        closeMobileMenu();
+            }
+        );
 
     });
 
-});
 
-
-/* =========================================================
-   MOBILE TOUCH EXPERIENCE
-   ========================================================= */
+/* =====================================================
+   TOUCH DEVICES
+===================================================== */
 
 if ("ontouchstart" in window) {
 
-    body.classList.add("touch-device");
+    body.classList.add(
+        "touch-device"
+    );
 
 }
 
 
-/* =========================================================
-   ORIENTATION CHANGE
-   ========================================================= */
+/* =====================================================
+   ORIENTATION
+===================================================== */
 
-window.addEventListener("orientationchange", () => {
+window.addEventListener(
+    "orientationchange",
+    () => {
 
-    setTimeout(() => {
+        setTimeout(
+            () => {
 
-        updateNavbar();
+                updateNavbar();
 
-        closeMobileMenu();
+                closeMobileMenu();
 
-    }, 250);
+            },
+            250
+        );
 
-});
-
-
-/* =========================================================
-   ONLINE / OFFLINE STATUS
-   ========================================================= */
-
-window.addEventListener("offline", () => {
-
-    body.classList.add("offline");
-
-});
+    }
+);
 
 
-window.addEventListener("online", () => {
-
-    body.classList.remove("offline");
-
-});
-
-
-/* =========================================================
+/* =====================================================
    INITIAL STATE
-   ========================================================= */
+===================================================== */
 
 if (mobileMenu) {
 
-    mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenu.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
 }
-
 
 if (menuButton) {
 
-    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
 
 }
 
-
-/* =========================================================
-   PAGE READY
-   ========================================================= */
-
-document.documentElement.classList.add("js-enabled");
+document.documentElement
+    .classList.add("js-enabled");
