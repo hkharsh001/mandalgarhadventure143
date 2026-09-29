@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +33,7 @@
     </a>
 
     <nav class="desktop-nav">
+
         <a href="#experience">Experience</a>
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
@@ -40,9 +42,14 @@
         <a href="#booking" class="nav-button">
             Book Now
         </a>
+
     </nav>
 
-    <button class="menu-button" id="menuButton">
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open menu"
+        aria-expanded="false">
         ☰
     </button>
 
@@ -51,9 +58,12 @@
 
 <!-- ================= MOBILE MENU ================= -->
 
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
 
-    <button class="close-menu" id="closeMenu">
+    <button
+        class="close-menu"
+        id="closeMenu"
+        aria-label="Close menu">
         ×
     </button>
 
@@ -72,6 +82,12 @@
 <!-- ================= HERO ================= -->
 
 <section class="hero">
+
+    <img
+        src="assets/images/hero.png"
+        alt="Paraglider flying above the Himalayan mountains"
+        class="hero-image"
+    >
 
     <div class="hero-overlay"></div>
 
@@ -119,27 +135,38 @@
 <section class="features">
 
     <div class="feature">
+
         <span>01</span>
+
         <div>
             <h3>Tandem Flights</h3>
             <p>Experience the sky with a pilot.</p>
         </div>
+
     </div>
 
+
     <div class="feature">
+
         <span>02</span>
+
         <div>
             <h3>Mountain Views</h3>
             <p>See the Himalayas from above.</p>
         </div>
+
     </div>
 
+
     <div class="feature">
+
         <span>03</span>
+
         <div>
             <h3>Pure Adventure</h3>
             <p>Take off. Let go. Fly.</p>
         </div>
+
     </div>
 
 </section>
@@ -174,11 +201,14 @@
 
         </div>
 
+
         <div class="experience-image">
 
             <img
-                src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1400&q=85"
-                alt="Mountain landscape">
+                src="assets/images/experience.jpg"
+                alt="Tandem paragliding experience"
+                loading="lazy"
+            >
 
         </div>
 
@@ -272,20 +302,28 @@
     <div class="gallery-grid">
 
         <img
-            src="https://images.unsplash.com/photo-1529946179074-87642f6204d7?auto=format&fit=crop&w=1000&q=85"
-            alt="Paragliding">
+            src="assets/images/gallery1.jpg"
+            alt="Paraglider flying over the mountains"
+            loading="lazy"
+        >
 
         <img
-            src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=1000&q=85"
-            alt="Mountain">
+            src="assets/images/gallery2.jpg"
+            alt="Tandem paragliding flight"
+            loading="lazy"
+        >
 
         <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85"
-            alt="Himalayan mountains">
+            src="assets/images/gallery3.jpg"
+            alt="Paraglider against the Himalayan sky"
+            loading="lazy"
+        >
 
         <img
-            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
-            alt="Adventure">
+            src="assets/images/gallery4.jpg"
+            alt="Paragliding adventure in the mountains"
+            loading="lazy"
+        >
 
     </div>
 
@@ -315,6 +353,17 @@
                 mountains differently.
             </p>
 
+
+            <div class="about-image">
+
+                <img
+                    src="assets/images/why-mandalgarh.jpg"
+                    alt="Mandalgarh Adventure 143 pilot and passenger"
+                    loading="lazy"
+                >
+
+            </div>
+
         </div>
 
 
@@ -322,33 +371,44 @@
 
             <div>
                 <span>01</span>
+
                 <h3>Safety First</h3>
+
                 <p>
                     Your experience starts with
                     responsible flying.
                 </p>
             </div>
 
+
             <div>
                 <span>02</span>
+
                 <h3>Experienced Team</h3>
+
                 <p>
                     Guidance throughout your flight.
                 </p>
             </div>
 
+
             <div>
                 <span>03</span>
+
                 <h3>Beautiful Locations</h3>
+
                 <p>
                     Explore breathtaking mountain
                     landscapes.
                 </p>
             </div>
 
+
             <div>
                 <span>04</span>
+
                 <h3>Unforgettable Moments</h3>
+
                 <p>
                     Take memories home with you.
                 </p>
@@ -419,6 +479,13 @@
 
 <section class="booking" id="booking">
 
+    <img
+        src="assets/images/booking.jpg"
+        alt="Paragliding flight above the mountains"
+        class="booking-image"
+        loading="lazy"
+    >
+
     <div class="booking-overlay"></div>
 
     <div class="booking-content">
@@ -438,14 +505,17 @@
 
         <div class="booking-buttons">
 
-            <a href="tel:+91XXXXXXXXXX"
-               class="button primary">
+            <a
+                href="tel:+91XXXXXXXXXX"
+                class="button primary">
                 Call Now →
             </a>
 
-            <a href="https://wa.me/91XXXXXXXXXX"
-               target="_blank"
-               class="button whatsapp">
+            <a
+                href="https://wa.me/91XXXXXXXXXX"
+                target="_blank"
+                rel="noopener"
+                class="button whatsapp">
                 WhatsApp
             </a>
 
@@ -464,13 +534,9 @@
 
         <div class="footer-brand">
 
-            <strong>
-                MANDALGARH
-            </strong>
+            <strong>MANDALGARH</strong>
 
-            <span>
-                ADVENTURE 143
-            </span>
+            <span>ADVENTURE 143</span>
 
             <p>
                 Experience the sky.
@@ -492,13 +558,17 @@
 
         <div class="social">
 
-            <a href="https://www.instagram.com/mandalgarhadventure143/"
-               target="_blank">
+            <a
+                href="https://www.instagram.com/mandalgarhadventure143/"
+                target="_blank"
+                rel="noopener">
                 Instagram
             </a>
 
-            <a href="https://wa.me/91XXXXXXXXXX"
-               target="_blank">
+            <a
+                href="https://wa.me/91XXXXXXXXXX"
+                target="_blank"
+                rel="noopener">
                 WhatsApp
             </a>
 
