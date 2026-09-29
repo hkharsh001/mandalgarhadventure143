@@ -251,7 +251,9 @@ button {
 }
 
 
-/* Hero image */
+/* =====================================================
+   HERO IMAGE
+===================================================== */
 
 .hero-image {
     position: absolute;
@@ -262,13 +264,17 @@ button {
     height: 100%;
 
     object-fit: cover;
-    object-position: center;
+
+    /* Desktop */
+    object-position: center center;
 
     z-index: 0;
 }
 
 
-/* Hero overlay */
+/* =====================================================
+   HERO OVERLAY
+===================================================== */
 
 .hero-overlay {
     position: absolute;
@@ -287,7 +293,9 @@ button {
 }
 
 
-/* Hero content */
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 .hero-content {
     position: relative;
@@ -328,7 +336,9 @@ button {
 }
 
 
-/* Hero buttons */
+/* =====================================================
+   HERO BUTTONS
+===================================================== */
 
 .hero-buttons {
     display: flex;
@@ -339,7 +349,9 @@ button {
 }
 
 
-/* Buttons */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .button {
     display: inline-flex;
@@ -369,6 +381,7 @@ button {
 
 .button.primary {
     background: var(--white);
+
     color: var(--bg);
 }
 
@@ -386,11 +399,14 @@ button {
 
 .button.secondary:hover {
     background: var(--white);
+
     color: var(--bg);
 }
 
 
-/* Scroll indicator */
+/* =====================================================
+   SCROLL INDICATOR
+===================================================== */
 
 .scroll-indicator {
     position: absolute;
@@ -408,6 +424,93 @@ button {
 }
 
 
+/* =====================================================
+   MOBILE HERO
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .hero {
+        min-height: 90vh;
+
+        padding:
+            110px 7%
+            70px;
+    }
+
+
+    /* Better mobile image composition */
+
+    .hero-image {
+        object-position: 58% center;
+    }
+
+
+    /* Mobile overlay */
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0,0,0,.58),
+                rgba(0,0,0,.22)
+            );
+    }
+
+
+    /* Mobile heading */
+
+    .hero h1 {
+        font-size: clamp(48px, 13vw, 70px);
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+
+    /* Mobile buttons */
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .button {
+        width: auto;
+    }
+
+
+    /* Hide scroll indicator */
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .hero-image {
+        object-position: 56% center;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+}
 /* =====================================================
    FEATURES
 ===================================================== */
