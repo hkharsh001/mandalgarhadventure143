@@ -61,7 +61,6 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-
     height: 90px;
 
     padding: 0 5%;
@@ -95,7 +94,6 @@ button {
 .logo {
     display: flex;
     flex-direction: column;
-
     line-height: 1;
 }
 
@@ -264,7 +262,6 @@ button {
     height: 100%;
 
     object-fit: cover;
-
     object-position: center;
 
     z-index: 0;
@@ -770,6 +767,10 @@ button {
    LOCATION
 ===================================================== */
 
+.location {
+    background: var(--bg);
+}
+
 .location-grid {
     max-width: var(--max-width);
 
@@ -801,35 +802,76 @@ button {
 }
 
 
-/* Map */
+/* =====================================================
+   GOOGLE MAP
+===================================================== */
 
 .map-placeholder {
+    position: relative;
+
+    width: 100%;
     min-height: 450px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #15191a,
-            #0e1011
-        );
+    overflow: hidden;
+
+    background: #15191a;
 
     border: 1px solid var(--line);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
 }
 
+
+/* Google Maps iframe */
+
+.map-placeholder iframe {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+
+    filter: grayscale(100%) contrast(1.05);
+
+    opacity: .88;
+
+    transition:
+        filter .4s ease,
+        opacity .4s ease;
+}
+
+
+/* Slightly reveal the map on hover */
+
+.map-placeholder:hover iframe {
+    filter: grayscale(20%) contrast(1.05);
+
+    opacity: 1;
+}
+
+
+/* Fallback content if iframe is not present */
+
 .map-content {
+    position: absolute;
+
+    inset: 0;
+
     display: flex;
 
     flex-direction: column;
 
+    align-items: center;
+    justify-content: center;
+
     gap: 5px;
+
+    text-align: center;
+
+    pointer-events: none;
 }
 
 .map-pin {
@@ -850,6 +892,13 @@ button {
     color: var(--muted);
 
     letter-spacing: 3px;
+}
+
+
+/* Hide fallback content when map iframe exists */
+
+.map-placeholder iframe + .map-content {
+    display: none;
 }
 
 
@@ -1256,7 +1305,9 @@ button {
     }
 
 
-    /* Location */
+    /* =================================================
+       LOCATION — MOBILE
+    ================================================= */
 
     .location-grid {
         grid-template-columns: 1fr;
@@ -1268,7 +1319,17 @@ button {
         font-size: 48px;
     }
 
+    .location p {
+        font-size: 14px;
+    }
+
     .map-placeholder {
+        min-height: 350px;
+
+        width: 100%;
+    }
+
+    .map-placeholder iframe {
         min-height: 350px;
     }
 
@@ -1342,6 +1403,14 @@ button {
 
     .about-features {
         grid-template-columns: 1fr;
+    }
+
+    .map-placeholder {
+        min-height: 300px;
+    }
+
+    .map-placeholder iframe {
+        min-height: 300px;
     }
 
 }
