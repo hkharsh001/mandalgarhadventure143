@@ -852,25 +852,8 @@ button {
 
     display: block;
 
-    filter: grayscale(70%) contrast(1.05);
-
-    opacity: .92;
-
-    transition:
-        filter .4s ease,
-        opacity .4s ease;
-}
-
-
-/* Reveal natural map colours */
-
-.map-placeholder:hover iframe {
-    filter: grayscale(10%) contrast(1.05);
-
     opacity: 1;
 }
-
-
 /* ---------------- FALLBACK ---------------- */
 
 .map-content {
