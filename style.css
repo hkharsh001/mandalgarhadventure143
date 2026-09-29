@@ -207,20 +207,17 @@ button {
 ========================= */
 
 .hero {
-    min-height: 100svh;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    color: white;
-
     background-image:
-        url("assets/images/Hero.webp");
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("assets/images/hero.webp");
 
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-overlay {
