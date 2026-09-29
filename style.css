@@ -213,7 +213,7 @@ button {
             rgba(0, 0, 0, 0.45),
             rgba(0, 0, 0, 0.10)
         ),
-        url("assets/images/hero.webp");
+        url("assets/images/hero.png");
 
     background-size: cover;
     background-position: center;
